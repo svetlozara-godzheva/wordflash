@@ -1,0 +1,6 @@
+.btn-xlg {
+    --bs-btn-padding-y: 1rem;
+    --bs-btn-padding-x: 1rem;
+    --bs-btn-font-size: 3rem;
+    --bs-btn-border-radius: var(--bs-border-radius-lg);
+}
