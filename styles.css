@@ -4,3 +4,14 @@
     --bs-btn-font-size: 3rem;
     --bs-btn-border-radius: var(--bs-border-radius-lg);
 }
+
+.card {
+    min-height: 310px;
+}
+
+.card .list-group-item {
+    border: 0px;
+    font-size: 1.5rem;
+    color: var(--bs-card-title-color);
+    cursor: pointer;
+}
