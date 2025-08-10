@@ -2,7 +2,7 @@ import { delay, loadWords, selectWords, collectResults } from "./shared.js";
 
 const wordsCount = 5;
 const selectedLanguage = "es";
-const flashInterval = 100;
+const flashInterval = 4000;
 const wordAnimationDelay = 500;
 const questionAnimationDelay = 100;
 
