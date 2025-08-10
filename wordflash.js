@@ -14,9 +14,12 @@ function loadLearningStage() {
 async function startQuiz(words) {
     let quizQuestions = createQuestions(words);
     let answers = [];
+    let counter = 0;
     while (quizQuestions.length != 0) {
+        counter++;
         let question = quizQuestions.pop();
         showQuestion(question);
+        showCounter(counter, words.length);
         question.answer = await getAnswer();
         answers.push(question);
     }
@@ -78,6 +81,17 @@ async function getAnswer() {
     return result;
 }
 
+function hideCounter() {
+    let progressCounter = document.getElementById("progress-counter");
+    progressCounter.classList.add("invisible");
+}
+function showCounter(leftNumber, rightNumber) {
+    let progressCounter = document.getElementById("progress-counter");
+    progressCounter.classList.remove("invisible");
+    console.log(leftNumber, rightNumber);
+    progressCounter.innerHTML = `${leftNumber} / ${rightNumber}`;
+}
+
 async function showResults(results) {
     let correctAnswers = results.filter((element) => {
         return element.translation === element.answer;
@@ -88,9 +102,8 @@ async function showResults(results) {
                                 <a href="#" class="list-group-item list-group-item-action mb-3" id="try-again">Try Again</a>
                                 <a href="/" class="list-group-item list-group-item-action">See Your Results</a>
                             </div>`;
-    let progressCounter = document.getElementById("progress-counter");
-    progressCounter.classList.add("invisible");
 
+    hideCounter();
     let tryAgainClicked = new Promise((resolve) => {
         let tryAgain = document.getElementById("try-again");
         tryAgain.addEventListener("click", () => {
@@ -132,7 +145,10 @@ function showWord(word) {
 
 async function flashWords(words) {
     let wordsToFlash = [...words];
+    let counter = 0;
     while (wordsToFlash.length > 0) {
+        counter++;
+        showCounter(counter, words.length);
         showWord(wordsToFlash.pop());
         await delay(flashInterval);
     }
