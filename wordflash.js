@@ -27,10 +27,12 @@ async function startQuiz(words) {
 function createQuestions(words) {
     let questions = [{
         "word": "amigo",
+        "translation": "friend",
         "suggestions": ["friend", "hello", "thank you", "family"]
     },
     {
         "word": "hola",
+        "translation": "hello",
         "suggestions": ["hello", "family", "friend", "thank you"]
     }];
     return questions;
@@ -62,7 +64,17 @@ async function getAnswer() {
 }
 
 function showResults(results) {
-    console.log(results);
+    let correctAnswers = results.filter((element) => {
+        return element.translation === element.answer;
+    });
+    let card = document.getElementById("card");
+    card.innerHTML = `<h2 class="card-title text-center mb-5">Your Score: ${correctAnswers.length} / ${results.length}</h2>
+                            <div class="list-group text-center">
+                                <a href="#" class="list-group-item list-group-item-action mb-3">Try Again</a>
+                                <a href="/" class="list-group-item list-group-item-action">See Your Results</a>
+                            </div>`;
+    let progressCounter = document.getElementById("progress-counter");
+    progressCounter.classList.add("invisible");
 }
 
 function loadWords(language) {
