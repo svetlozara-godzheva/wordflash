@@ -1,29 +1,34 @@
+const wordsCount = 5;
+const selectedLanguage = "es";
+const flashInterval = 500;
+
+function loadLearningStage() {
+    loadWords(selectedLanguage).then((words) => {
+        let learningStageWords = selectWords(words, wordsCount);
+        flashWords(learningStageWords);
+    });
+}
+
 function loadWords(language) {
-    return [{
-        "word": "amigo",
-        "translation": "friend",
-        "meaning": "A person you know well and like, and who is not usually a member of your family."
-    },
-    {
-        "word": "hola",
-        "translation": "hello",
-        "meaning": "A greeting or expression used when meeting someone."
-    },
-    {
-        "word": "gracias",
-        "translation": "thank you",
-        "meaning": "A polite expression used when acknowledging a gift, service, or compliment."
-    },
-    {
-        "word": "familia",
-        "translation": "family",
-        "meaning": "A group consisting of parents and their children, or all the descendants of a common ancestor."
-    }
-    ];
+    let result = fetch(`/dictionaries/${language}.json`).then((response) => {
+        if (response.status === 200) {
+            return response.json();
+        } else {
+            throw new Error("Failed to get json file.");
+        }
+    });
+    return result;
 }
 
 function selectWords(words, count) {
-    return words;
+    let selectedWords = [];
+    const arr = Array.from({ length: words.length }, (_, i) => i);
+    let selectedIndexes = arr.sort(() => Math.random() - 0.5)
+        .slice(0, count);
+    for (let i = 0; i < selectedIndexes.length; i++) {
+        selectedWords.push(words[selectedIndexes[i]]);
+    }
+    return selectedWords;
 }
 
 function showWord(word) {
@@ -37,13 +42,7 @@ function flashWords(words) {
     showWord(words.pop());
     setTimeout(() => {
         flashWords(words);
-    }, 500);
-}
-
-function loadLearningStage() {
-    let words = loadWords("es");
-    let learningStageWords = selectWords(words, 20);
-    flashWords(learningStageWords);
+    }, flashInterval);
 }
 
 loadLearningStage();
