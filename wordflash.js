@@ -1,8 +1,8 @@
-import { delay, loadWords, selectWords } from "./shared.js";
+import { delay, loadWords, selectWords, collectResults } from "./shared.js";
 
 const wordsCount = 5;
 const selectedLanguage = "es";
-const flashInterval = 5000;
+const flashInterval = 100;
 const wordAnimationDelay = 500;
 const questionAnimationDelay = 100;
 
@@ -27,6 +27,7 @@ async function startQuiz(words) {
         question.answer = await getAnswer();
         answers.push(question);
     }
+    collectResults(answers);
     await showResults(answers);
 
     //start again flash cards + quiz

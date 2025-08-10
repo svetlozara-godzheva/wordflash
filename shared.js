@@ -28,3 +28,14 @@ export async function delay(interval) {
     });
     return result;
 }
+
+export function collectResults(results) {
+    let wrongAnswers = results.filter((x) => x.answer != x.translation);
+    let rightAnswers = results.filter((x) => x.answer === x.translation);
+    localStorage.setItem("wrong-answers", JSON.stringify(wrongAnswers));
+}
+
+export function getWrongAnswers() {
+    let wrongAnswers = localStorage.getItem("wrong-answers");
+    return JSON.parse(wrongAnswers);
+}
