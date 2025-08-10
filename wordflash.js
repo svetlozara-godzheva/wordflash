@@ -5,8 +5,64 @@ const flashInterval = 500;
 function loadLearningStage() {
     loadWords(selectedLanguage).then((words) => {
         let learningStageWords = selectWords(words, wordsCount);
-        flashWords(learningStageWords);
+        flashWords(learningStageWords).then(() => {
+            startQuiz(learningStageWords);
+        });
     });
+}
+
+async function startQuiz(words) {
+    let quizQuestions = createQuestions(words);
+    let answers = [];
+    while (quizQuestions.length != 0) {
+        let question = quizQuestions.pop();
+        showQuestion(question);
+        question.answer = await getAnswer();
+        answers.push(question);
+    }
+    showResults(answers);
+    console.log("Quiz started");
+}
+
+function createQuestions(words) {
+    let questions = [{
+        "word": "amigo",
+        "suggestions": ["friend", "hello", "thank you", "family"]
+    },
+    {
+        "word": "hola",
+        "suggestions": ["hello", "family", "friend", "thank you"]
+    }];
+    return questions;
+}
+
+function showQuestion(question) {
+    let card = document.getElementById("card");
+    card.innerHTML = `<h2 class="card-title text-center mb-5">${question.word}</h2>
+                      <div class="list-group list-group-horizontal text-center">
+                          <a href="#" class="list-group-item list-group-item-action answer">${question.suggestions[0]}</a>
+                          <a href="#" class="list-group-item list-group-item-action answer">${question.suggestions[1]}</a>
+                      </div>
+                      <div class="list-group list-group-horizontal text-center mt-3">
+                          <a href="#" class="list-group-item list-group-item-action answer">${question.suggestions[2]}</a>
+                          <a href="#" class="list-group-item list-group-item-action answer">${question.suggestions[3]}</a>
+                      </div>`;
+}
+
+async function getAnswer() {
+    let result = new Promise((resolve) => {
+        let answers = document.getElementsByClassName("answer");
+        for (const answer of answers) {
+            answer.addEventListener("click", () => {
+                resolve(answer.innerHTML);
+            });
+        }
+    });
+    return result;
+}
+
+function showResults(results) {
+    console.log(results);
 }
 
 function loadWords(language) {
@@ -38,11 +94,21 @@ function showWord(word) {
                       <p class="card-text text-body-secondary">${word.meaning}</p>`;
 }
 
-function flashWords(words) {
-    showWord(words.pop());
-    setTimeout(() => {
-        flashWords(words);
-    }, flashInterval);
+async function flashWords(words) {
+    let wordsToFlash = [...words];
+    while (wordsToFlash.length > 0) {
+        showWord(wordsToFlash.pop());
+        await delay(flashInterval);
+    }
+}
+
+async function delay(interval) {
+    let result = new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, interval);
+    });
+    return result;
 }
 
 loadLearningStage();
