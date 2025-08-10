@@ -30,17 +30,27 @@ async function startQuiz(words) {
 }
 
 function createQuestions(words) {
-    let questions = [{
-        "word": "amigo",
-        "translation": "friend",
-        "suggestions": ["friend", "hello", "thank you", "family"]
-    },
-    {
-        "word": "hola",
-        "translation": "hello",
-        "suggestions": ["hello", "family", "friend", "thank you"]
-    }];
+    let questions = [];
+    for (const word of words) {
+        let question = {
+            word: word.word,
+            translation: word.translation,
+            suggestions: createSuggestions(word, words)
+        };
+        questions.push(question);
+    }
     return questions;
+}
+function createSuggestions(word, words) {
+
+    let wordsPool = words.filter((x) => x.word != word.word);
+    let randomWords = selectWords(wordsPool, 3);
+    let result = []
+    for (const randomWord of randomWords) {
+        result.push(randomWord.translation);
+    }
+    result.push(word.translation);
+    return result.sort(() => Math.random() - 0.5);
 }
 
 function showQuestion(question) {
