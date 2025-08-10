@@ -1,6 +1,8 @@
 const wordsCount = 5;
 const selectedLanguage = "es";
-const flashInterval = 100;
+const flashInterval = 5000;
+const wordAnimationDelay = 500;
+const questionAnimationDelay = 100;
 
 function loadLearningStage() {
     loadWords(selectedLanguage).then((words) => {
@@ -18,7 +20,7 @@ async function startQuiz(words) {
     while (quizQuestions.length != 0) {
         counter++;
         let question = quizQuestions.pop();
-        showQuestion(question);
+        await showQuestion(question);
         showCounter(counter, words.length);
         question.answer = await getAnswer();
         answers.push(question);
@@ -56,8 +58,11 @@ function createSuggestions(word, words) {
     return result.sort(() => Math.random() - 0.5);
 }
 
-function showQuestion(question) {
+async function showQuestion(question) {
     let card = document.getElementById("card");
+    let cardParent = document.getElementById("card-container");
+    cardParent.classList.add("hidden");
+    await delay(questionAnimationDelay);
     card.innerHTML = `<h2 class="card-title text-center mb-5">${question.word}</h2>
                       <div class="list-group list-group-horizontal text-center">
                           <a href="#" class="list-group-item list-group-item-action answer">${question.suggestions[0]}</a>
@@ -67,6 +72,8 @@ function showQuestion(question) {
                           <a href="#" class="list-group-item list-group-item-action answer">${question.suggestions[2]}</a>
                           <a href="#" class="list-group-item list-group-item-action answer">${question.suggestions[3]}</a>
                       </div>`;
+
+    cardParent.classList.remove("hidden");
 }
 
 async function getAnswer() {
@@ -136,11 +143,16 @@ function selectWords(words, count) {
     return selectedWords;
 }
 
-function showWord(word) {
+async function showWord(word) {
     let card = document.getElementById("card");
+    let cardParent = document.getElementById("card-container");
+    cardParent.classList.add("hidden");
+    await delay(wordAnimationDelay);
     card.innerHTML = `<h2 class="card-title text-center mb-5">${word.word}</h2>
                       <h4 class="card-title text-center mb-5">${word.translation}</h4>
                       <p class="card-text text-body-secondary">${word.meaning}</p>`;
+
+    cardParent.classList.remove("hidden");
 }
 
 async function flashWords(words) {
@@ -148,8 +160,9 @@ async function flashWords(words) {
     let counter = 0;
     while (wordsToFlash.length > 0) {
         counter++;
+        await showWord(wordsToFlash.pop());
         showCounter(counter, words.length);
-        showWord(wordsToFlash.pop());
+        // to read the card
         await delay(flashInterval);
     }
 }
