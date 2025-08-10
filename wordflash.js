@@ -1,6 +1,8 @@
+import { delay, loadWords, selectWords, collectResults } from "./shared.js";
+
 const wordsCount = 5;
 const selectedLanguage = "es";
-const flashInterval = 5000;
+const flashInterval = 100;
 const wordAnimationDelay = 500;
 const questionAnimationDelay = 100;
 
@@ -25,6 +27,7 @@ async function startQuiz(words) {
         question.answer = await getAnswer();
         answers.push(question);
     }
+    collectResults(answers);
     await showResults(answers);
 
     //start again flash cards + quiz
@@ -121,28 +124,6 @@ async function showResults(results) {
     return tryAgainClicked;
 }
 
-function loadWords(language) {
-    let result = fetch(`/dictionaries/${language}.json`).then((response) => {
-        if (response.status === 200) {
-            return response.json();
-        } else {
-            throw new Error("Failed to get json file.");
-        }
-    });
-    return result;
-}
-
-function selectWords(words, count) {
-    let selectedWords = [];
-    const arr = Array.from({ length: words.length }, (_, i) => i);
-    let selectedIndexes = arr.sort(() => Math.random() - 0.5)
-        .slice(0, count);
-    for (let i = 0; i < selectedIndexes.length; i++) {
-        selectedWords.push(words[selectedIndexes[i]]);
-    }
-    return selectedWords;
-}
-
 async function showWord(word) {
     let card = document.getElementById("card");
     let cardParent = document.getElementById("card-container");
@@ -165,15 +146,6 @@ async function flashWords(words) {
         // to read the card
         await delay(flashInterval);
     }
-}
-
-async function delay(interval) {
-    let result = new Promise((resolve) => {
-        setTimeout(() => {
-            resolve();
-        }, interval);
-    });
-    return result;
 }
 
 loadLearningStage();
