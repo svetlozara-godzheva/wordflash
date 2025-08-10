@@ -1,6 +1,6 @@
 const wordsCount = 5;
 const selectedLanguage = "es";
-const flashInterval = 500;
+const flashInterval = 100;
 
 function loadLearningStage() {
     loadWords(selectedLanguage).then((words) => {
@@ -20,7 +20,12 @@ async function startQuiz(words) {
         question.answer = await getAnswer();
         answers.push(question);
     }
-    showResults(answers);
+    await showResults(answers);
+
+    //start again flash cards + quiz
+    flashWords(words).then(() => {
+        startQuiz(words);
+    });
     console.log("Quiz started");
 }
 
@@ -63,18 +68,27 @@ async function getAnswer() {
     return result;
 }
 
-function showResults(results) {
+async function showResults(results) {
     let correctAnswers = results.filter((element) => {
         return element.translation === element.answer;
     });
     let card = document.getElementById("card");
     card.innerHTML = `<h2 class="card-title text-center mb-5">Your Score: ${correctAnswers.length} / ${results.length}</h2>
                             <div class="list-group text-center">
-                                <a href="#" class="list-group-item list-group-item-action mb-3">Try Again</a>
+                                <a href="#" class="list-group-item list-group-item-action mb-3" id="try-again">Try Again</a>
                                 <a href="/" class="list-group-item list-group-item-action">See Your Results</a>
                             </div>`;
     let progressCounter = document.getElementById("progress-counter");
     progressCounter.classList.add("invisible");
+
+    let tryAgainClicked = new Promise((resolve) => {
+        let tryAgain = document.getElementById("try-again");
+        tryAgain.addEventListener("click", () => {
+            resolve();
+        });
+
+    });
+    return tryAgainClicked;
 }
 
 function loadWords(language) {
