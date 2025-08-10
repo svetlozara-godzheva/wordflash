@@ -1,4 +1,4 @@
-import { getWrongAnswers } from "./shared.js";
+import { getAverageQuizTime, getStatistic, getWrongAnswers } from "./shared.js";
 
 function displayChart() {
     const pieChartElement = document.getElementById("chart");
@@ -40,3 +40,11 @@ function displayWrongAnswers() {
     }
 }
 displayWrongAnswers();
+
+function displayStatistics() {
+    let statistics = document.getElementById("statistics");
+    statistics.innerHTML = `<li class="list-group-item">Average Quiz Time: ${getAverageQuizTime()} sec</li>
+                            <li class="list-group-item">Total Wrong Answers: ${getStatistic("wrong-answers-count")}</li>
+                            <li class="list-group-item">Total Right Answers: ${getStatistic("right-answers-count")}</li>`;
+}
+displayStatistics();

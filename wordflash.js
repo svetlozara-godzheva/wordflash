@@ -19,6 +19,7 @@ async function startQuiz(words) {
     let quizQuestions = createQuestions(words);
     let answers = [];
     let counter = 0;
+    let startTime = new Date();
     while (quizQuestions.length != 0) {
         counter++;
         let question = quizQuestions.pop();
@@ -27,7 +28,10 @@ async function startQuiz(words) {
         question.answer = await getAnswer();
         answers.push(question);
     }
-    collectResults(answers);
+    let endTime = new Date();
+    let quizTime = (endTime - startTime) / 1000;
+
+    collectResults(answers, quizTime);
     await showResults(answers);
 
     //start again flash cards + quiz
