@@ -9,8 +9,7 @@ function displayChart() {
         labels: ["Right Answers", "Wrong Answers"],
         datasets: [
             {
-                label: 'Dataset 1',
-                data: [10, 2],
+                data: [getStatistic("right-answers-count"), getStatistic("wrong-answers-count")],
                 backgroundColor: ["blue", "red"],
             }
         ]
