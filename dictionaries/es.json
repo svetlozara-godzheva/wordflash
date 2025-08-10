@@ -1,0 +1,102 @@
+[
+    {
+        "word": "amigo",
+        "translation": "friend",
+        "meaning": "A person you know well and like, and who is not usually a member of your family."
+    },
+    {
+        "word": "hola",
+        "translation": "hello",
+        "meaning": "A greeting or expression used when meeting someone."
+    },
+    {
+        "word": "gracias",
+        "translation": "thank you",
+        "meaning": "A polite expression used when acknowledging a gift, service, or compliment."
+    },
+    {
+        "word": "familia",
+        "translation": "family",
+        "meaning": "A group consisting of parents and their children, or all the descendants of a common ancestor."
+    },
+    {
+        "word": "amor",
+        "translation": "love",
+        "meaning": "An intense feeling of deep affection for someone or something."
+    },
+    {
+        "word": "comida",
+        "translation": "food",
+        "meaning": "Substance consumed to provide nutritional support for the body."
+    },
+    {
+        "word": "casa",
+        "translation": "house",
+        "meaning": "A building for human habitation, especially one that is lived in by a family or small group of people."
+    },
+    {
+        "word": "escuela",
+        "translation": "school",
+        "meaning": "An institution for educating children or giving instruction in a particular subject."
+    },
+    {
+        "word": "trabajo",
+        "translation": "work",
+        "meaning": "Activity involving mental or physical effort done in order to achieve a purpose or result."
+    },
+    {
+        "word": "libro",
+        "translation": "book",
+        "meaning": "A set of written or printed pages bound together and enclosed between covers."
+    },
+    {
+        "word": "agua",
+        "translation": "water",
+        "meaning": "A colorless, transparent, odorless liquid that forms the seas, lakes, rivers, and rain."
+    },
+    {
+        "word": "perro",
+        "translation": "dog",
+        "meaning": "A domesticated carnivorous mammal that typically has a long snout and barks."
+    },
+    {
+        "word": "gato",
+        "translation": "cat",
+        "meaning": "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws."
+    },
+    {
+        "word": "ciudad",
+        "translation": "city",
+        "meaning": "A large town or a densely populated urban area."
+    },
+    {
+        "word": "noche",
+        "translation": "night",
+        "meaning": "The period of darkness in each twenty-four hours; the time from sunset to sunrise."
+    },
+    {
+        "word": "día",
+        "translation": "day",
+        "meaning": "A period of twenty-four hours as a unit of time, reckoned from one midnight to the next."
+    },
+    {
+        "word": "música",
+        "translation": "music",
+        "meaning": "Vocal or instrumental sounds combined in such a way as to produce beauty of form, harmony, and expression of emotion."
+    },
+    {
+        "word": "feliz",
+        "translation": "happy",
+        "meaning": "Feeling or showing pleasure or contentment."
+    },
+    {
+        "word": "sol",
+        "translation": "sun",
+        "meaning": "The star around which the earth orbits."
+    },
+    {
+        "word": "tiempo",
+        "translation": "time",
+        "meaning": "The indefinite continued progress of existence and events in the past, present, and future."
+    }
+]
