@@ -114,7 +114,7 @@ async function showResults(results) {
     card.innerHTML = `<h2 class="card-title text-center mb-5">Your Score: ${correctAnswers.length} / ${results.length}</h2>
                             <div class="list-group text-center">
                                 <a href="#" class="list-group-item list-group-item-action mb-3" id="try-again">Try Again</a>
-                                <a href="/" class="list-group-item list-group-item-action">See Your Results</a>
+                                <a href="index.html" class="list-group-item list-group-item-action">See Your Results</a>
                             </div>`;
 
     hideCounter();
