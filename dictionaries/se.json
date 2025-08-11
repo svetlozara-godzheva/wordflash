@@ -1,0 +1,147 @@
+[
+    {
+        "word": "vän",
+        "translation": "friend",
+        "meaning": "A person you know well and like, and who is not usually a member of your family."
+    },
+    {
+        "word": "hej",
+        "translation": "hello",
+        "meaning": "A greeting or expression used when meeting someone."
+    },
+    {
+        "word": "tack",
+        "translation": "thank you",
+        "meaning": "A polite expression used when acknowledging a gift, service, or compliment."
+    },
+    {
+        "word": "familj",
+        "translation": "family",
+        "meaning": "A group consisting of parents and their children, or all the descendants of a common ancestor."
+    },
+    {
+        "word": "kärlek",
+        "translation": "love",
+        "meaning": "An intense feeling of deep affection for someone or something."
+    },
+    {
+        "word": "mat",
+        "translation": "food",
+        "meaning": "Substance consumed to provide nutritional support for the body."
+    },
+    {
+        "word": "hus",
+        "translation": "house",
+        "meaning": "A building for people to live in, usually for one family"
+    },
+    {
+        "word": "skola",
+        "translation": "school",
+        "meaning": "An institution for educating children."
+    },
+    {
+        "word": "arbete",
+        "translation": "work",
+        "meaning": "Activity involving mental or physical effort done in order to achieve a purpose or result."
+    },
+    {
+        "word": "bok",
+        "translation": "book",
+        "meaning": "A set of written or printed pages bound together and enclosed between covers."
+    },
+    {
+        "word": "vatten",
+        "translation": "water",
+        "meaning": "A colorless, transparent, odorless liquid that forms the seas, lakes, rivers, and rain."
+    },
+    {
+        "word": "hund",
+        "translation": "dog",
+        "meaning": "A domesticated carnivorous mammal that typically has a long snout and barks."
+    },
+    {
+        "word": "katt",
+        "translation": "cat",
+        "meaning": "A small domesticated carnivorous mammal with soft fur, a short snout, and retractile claws."
+    },
+    {
+        "word": "stad",
+        "translation": "city",
+        "meaning": "A large town or a densely populated urban area."
+    },
+    {
+        "word": "natt",
+        "translation": "night",
+        "meaning": "The period of darkness in each twenty-four hours."
+    },
+    {
+        "word": "dag",
+        "translation": "day",
+        "meaning": "A period of twenty-four hours as a unit of time."
+    },
+    {
+        "word": "musik",
+        "translation": "music",
+        "meaning": "Sounds that are arranged in a way that is pleasant or exciting to listen to."
+    },
+    {
+        "word": "glad",
+        "translation": "happy",
+        "meaning": "Feeling or showing pleasure or contentment."
+    },
+    {
+        "word": "sol",
+        "translation": "sun",
+        "meaning": "The star around which the earth orbits."
+    },
+    {
+        "word": "bil",
+        "translation": "car",
+        "meaning": "A road vehicle, typically with four wheels."
+    },
+    {
+        "word": "blomma",
+        "translation": "flower",
+        "meaning": "The coloured part of a plant from which the seed or fruit develops."
+    },
+    {
+        "word": "skog",
+        "translation": "forest",
+        "meaning": "A large area covered with trees and undergrowth."
+    },
+    {
+        "word": "sjö",
+        "translation": "lake",
+        "meaning": "A large body of water surrounded by land."
+    },
+    {
+        "word": "måne",
+        "translation": "moon",
+        "meaning": "The natural satellite of the earth."
+    },
+    {
+        "word": "himmel",
+        "translation": "sky",
+        "meaning": "The space above the earth that you can see when you look up."
+    },
+    {
+        "word": "resa",
+        "translation": "travel",
+        "meaning": "The action of going from one place to another, typically over a distance."
+    },
+    {
+        "word": "barn",
+        "translation": "child",
+        "meaning": "A young human being below the age of puberty or below the legal age."
+    },
+    {
+        "word": "havet",
+        "translation": "sea",
+        "meaning": "The salt water that covers most of the earth's surface and surrounds its continents and islands"
+    },
+    {
+        "word": "berg",
+        "translation": "mountain",
+        "meaning": "A large natural elevation of the earth's surface."
+    }
+]
