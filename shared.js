@@ -1,5 +1,9 @@
 export function loadWords(language) {
-    let result = fetch(`/dictionaries/${language}.json`).then((response) => {
+    let prefix = "";
+    if (window.location.href.indexOf("github.io")) {
+        prefix = "/wordflash";
+    }
+    let result = fetch(`${prefix}/dictionaries/${language}.json`).then((response) => {
         if (response.status === 200) {
             return response.json();
         } else {
