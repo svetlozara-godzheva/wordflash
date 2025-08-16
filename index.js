@@ -10,7 +10,7 @@ function displayChart() {
         datasets: [
             {
                 data: [getStatistic("right-answers-count"), getStatistic("wrong-answers-count")],
-                backgroundColor: ["blue", "red"],
+                backgroundColor: ["#104a7d", "#f6d76b"],
             }
         ]
     };
@@ -23,6 +23,9 @@ function displayChart() {
             plugins: {
                 legend: {
                     position: "bottom",
+                    labels: {
+                        color: "#12223c"
+                    }
                 }
             }
         },
