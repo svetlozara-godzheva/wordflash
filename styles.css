@@ -1,3 +1,42 @@
+:root {
+    --background-color: #ffffff;
+    --font-color: #12223c;
+    --palette-1: #104a7d;
+    --palette-2: #45a9ff;
+    --palette-3: #f6d76b;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+.btn-primary {
+    background-color: var(--palette-1);
+    color: var(--background-color);
+    box-shadow: var(--bs-box-shadow) !important;
+    border-color: var(--palette-1) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--palette-1);
+    border-color: var(--palette-1) !important;
+    background-image: linear-gradient(to left, var(--palette-1), var(--font-color));
+}
+
+body,
+h5,
+.card-title,
+.text-body-secondary,
+.list-group-item,
+.table td,
+.table th {
+    color: var(--font-color) !important;
+}
+
+.bg-body-tertiary {
+    background-color: var(--background-color) !important;
+}
+
 .btn-xlg {
     --bs-btn-padding-y: 1rem;
     --bs-btn-padding-x: 1rem;
@@ -20,4 +59,9 @@
     font-size: 1.5rem;
     color: var(--bs-card-title-color);
     cursor: pointer;
+}
+
+.list-group-item {
+    border-radius: 0 !important;
+
 }

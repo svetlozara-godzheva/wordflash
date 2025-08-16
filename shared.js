@@ -1,6 +1,6 @@
 export function loadWords(language) {
     let prefix = "";
-    if (window.location.href.indexOf("github.io")) {
+    if (window.location.href.indexOf("github.io") > 0) {
         prefix = "/wordflash";
     }
     let result = fetch(`${prefix}/dictionaries/${language}.json`).then((response) => {
