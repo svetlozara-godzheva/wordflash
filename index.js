@@ -5,11 +5,16 @@ function displayChart() {
     const DATA_COUNT = 5;
     const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 100 };
 
+    let rightAnswers = getStatistic("right-answers-count");
+    let wrongAnswers = getStatistic("wrong-answers-count");
+    if (rightAnswers === 0 && wrongAnswers === 0) {
+        rightAnswers = 1;
+    }
     const data = {
         labels: ["Right Answers", "Wrong Answers"],
         datasets: [
             {
-                data: [getStatistic("right-answers-count"), getStatistic("wrong-answers-count")],
+                data: [rightAnswers, wrongAnswers],
                 backgroundColor: ["#104a7d", "#f6d76b"],
             }
         ]
@@ -37,9 +42,12 @@ displayChart();
 function displayWrongAnswers() {
     let wrongAnswers = getWrongAnswers();
     let wrongAnswersBody = document.getElementById("wrong-answers-body");
-    for (const wrongAnswer of wrongAnswers) {
-        wrongAnswersBody.innerHTML += `<tr><td>${wrongAnswer.word}</td><td>${wrongAnswer.translation}</td></tr>`;
+    if (wrongAnswers) {
+        for (const wrongAnswer of wrongAnswers) {
+            wrongAnswersBody.innerHTML += `<tr><td>${wrongAnswer.word}</td><td>${wrongAnswer.translation}</td></tr>`;
+        }
     }
+
 }
 displayWrongAnswers();
 
